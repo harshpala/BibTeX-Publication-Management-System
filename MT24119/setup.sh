@@ -23,7 +23,7 @@ mkdir -p src include build data
 # print the project structure
 echo "Project structure created. Directory and file setup:"
 echo "
-/your-project-root-directory
+/MT24119
 │
 ├── build/
 │   └── Makefile        # Empty, ready for build configuration
