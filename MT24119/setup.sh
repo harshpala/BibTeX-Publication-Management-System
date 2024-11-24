@@ -12,6 +12,10 @@ mkdir -p src include build
 [ ! -f include/Author.h ] && touch include/Author.h
 [ ! -f include/Publication.h ] && touch include/Publication.h
 
+# Create a sample empty .bib file in the data directory if it does not exist
+[ ! -f data/publist.bib ] && touch data/publist.bib
+[ ! -f data/faculty.csv ] && touch data/faculty.cdv
+
 # print the project structure
 echo "Project structure created. Directory and file setup:"
 echo "
@@ -23,6 +27,9 @@ echo "
 │   └── Publication.cpp # Empty source file for Publication class  
 │
 ├── include/
-    ├── Author.h        # Empty header file for the Author class
-    └── Publication.h   # Empty header file for the Publication class
+│   ├── Author.h        # Empty header file for the Author class
+│   └── Publication.h   # Empty header file for the Publication class
+│
+└── data/
+    └── sample.bib      # Empty .bib file for sample data
 "
