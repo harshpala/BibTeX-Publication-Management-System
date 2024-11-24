@@ -20,7 +20,7 @@ mkdir -p src include build data
 # Create a sample empty .bib file in the data directory if it does not exist
 [ ! -f data/sample.bib ] && touch data/publist.bib
 
-# Manually print the project structure
+# print the project structure
 echo "Project structure created. Directory and file setup:"
 echo "
 /your-project-root-directory
