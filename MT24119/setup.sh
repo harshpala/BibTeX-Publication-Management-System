@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create directories if they do not exist
-mkdir -p src include build
+mkdir -p src include build data
 
 # Create empty source files if they do not exist
 [ ! -f src/main.cpp ] && touch src/main.cpp
