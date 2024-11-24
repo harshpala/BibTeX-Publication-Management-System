@@ -4,7 +4,7 @@
 PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 # Create directories if they do not exist
-mkdir -p "$PROJECT_ROOT/src" "$PROJECT_ROOT/include" "$PROJECT_ROOT/build" "$PROJECT_ROOT/data"
+mkdir -p "$PROJECT_ROOT/src" "$PROJECT_ROOT/include" "$PROJECT_ROOT/data"
 
 # Create empty source files if they do not exist
 [ ! -f "$PROJECT_ROOT/src/main.cpp" ] && touch "$PROJECT_ROOT/src/main.cpp"
