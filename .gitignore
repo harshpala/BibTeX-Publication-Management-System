@@ -4,3 +4,5 @@
 *.so
 .vscode
 rm.txt
+bin
+build
