@@ -44,7 +44,7 @@ This project parses a BibTeX file containing publication data, processes it, and
 │   ├── FacultyParser.cpp           # Implementation of FacultyParser class
 │   ├── Publication.cpp             # Implementation of Publication class
 │   └── PublicationsDatabase.cpp    # Implementation of PublicationsDatabase class
-├── CMakeLists.txt                  # CMake build configuration (optional)
+├── setup.sh                        # build configuration
 ├── Makefile                        # Makefile for building the project
 └── README.md                       # Project documentation
 ```
