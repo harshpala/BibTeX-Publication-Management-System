@@ -94,3 +94,17 @@ For each queried author, the program will display the following details:
 - Volume, Number, and Pages (if available).
 - List of Authors and their affiliations (if known).
 
+
+## **Note**
+Each Publication object should contain a list of Author objects, representing the authors of the publication. Ensure at least one author has the institute's affiliation.
+Data Structure Considerations:
+
+Use STL containers like vector to manage collections of objects (e.g., storing multiple Publication or Author objects).
+Consider using map or unordered_map for efficient searching of publications by author name.
+Example Scenario Implementation:
+
+Create several Author objects, some affiliated with the institute and others not.
+Create a Publication object, adding the Author objects to it.
+Implement checks in the Publication class to validate the conditions like having at least one affiliated author.
+Handling Optional DOI:
+
