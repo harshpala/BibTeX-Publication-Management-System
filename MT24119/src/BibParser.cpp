@@ -16,36 +16,61 @@ vector<Publication> BibParser::parse(const string& filePath, const vector<string
     assert(file.is_open() && "Failed to open BibTeX file."); // Assert file opens successfully
 
     string line, entry;
-    int braceCount = 0; // Track brace balance
-    regex entryStart(R"(@\w+\{)"); // Match entry start
-    regex entryEnd(R"(\})");       // Match closing brace
+    bool inEntry = false; // Track if we're inside an entry
+    int braceCount = 0;   // Track brace balance
+    regex entryStart(R"(@\w+\{)");   // Match entry start
+    regex fieldStart(R"(^\s*\w+\s*=\s*\{)"); // Match start of a valid field
+    regex entryEnd(R"(^\s*\}\s*$)"); // Match only the closing brace of an entry
 
     while (getline(file, line)) {
         if (line.empty()) continue; // Skip empty lines
 
-        // Count braces
-        braceCount += count(line.begin(), line.end(), '{');
-        braceCount -= count(line.begin(), line.end(), '}');
-
-        if (regex_search(line, entryStart)) {
-            entry = line + "\n"; // Start a new entry
-        } else if (braceCount == 0 && !entry.empty()) {
-            // Process entry if braces are balanced and it's not empty
-            publications.push_back(parseEntry(entry, facultyList));
-            entry.clear();
-        } else {
-            entry += line + "\n"; // Accumulate entry content
+        if (!inEntry) {
+            // Check for entry start
+            if (regex_search(line, entryStart)) {
+                inEntry = true;
+                entry = line + "\n";
+                braceCount = count(line.begin(), line.end(), '{') - count(line.begin(), line.end(), '}');
+                continue;
+            } else if (!regex_match(line, regex(R"(\s*)"))) {
+                // Trigger assertion only if the line isn't blank or valid padding
+                assert(false && "Invalid Bib file: Unexpected content outside an entry.");
+            }
         }
 
-        // Assert that braces are not mismatched
-        assert(braceCount >= 0 && "Invalid Bib file: Mismatched closing braces.");
+        if (inEntry) {
+            entry += line + "\n";
+
+            // Update brace count
+            braceCount += count(line.begin(), line.end(), '{');
+            braceCount -= count(line.begin(), line.end(), '}');
+
+            // Check for entry end
+            if (braceCount == 0) {
+                try {
+                    // Parse the entry only if it's complete
+                    publications.push_back(parseEntry(entry, facultyList));
+                } catch (const exception& e) {
+                    cerr << "Skipping invalid entry: " << e.what() << endl;
+                }
+                entry.clear();
+                inEntry = false;
+            } else if (braceCount < 0) {
+                assert(false && "Invalid Bib file: Mismatched closing braces.");
+            }
+        }
     }
 
-    // Assert that all braces are balanced at the end
-    assert(braceCount == 0 && "Invalid Bib file: Unbalanced braces.");
+    // Handle unfinished entries or unbalanced braces
+    if (inEntry || braceCount != 0) {
+        cerr << "Error: Unfinished or malformed BibTeX entry detected." << endl;
+        assert(false && "Invalid Bib file: Unfinished entry or unbalanced braces.");
+    }
+
     file.close();
     return publications;
 }
+
 
 // Parse a single BibTeX entry and return a Publication object
 Publication BibParser::parseEntry(const string& entry, const vector<string>& facultyList) {
