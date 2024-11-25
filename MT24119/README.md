@@ -47,7 +47,7 @@ This project parses a BibTeX file containing publication data, processes it, and
 │   ├── publist.bib     # Empty .bib file for sample data
 │   └── faculty.csv     # Empty CSV file for faculty data
 │    
-├── CMakeLists.txt                  # CMake build configuration (optional)
+├── setup.sh                        # build configuration
 ├── Makefile                        # Makefile for building the project
 └── README.md                       # Project documentation
 ```
