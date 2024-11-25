@@ -26,22 +26,23 @@ This project parses a BibTeX file containing publication data, processes it, and
 ```
 /MT24119
 │
-├── build/                          # Build directory for compiled objects
-├── bin/                            # Executable files directory
-│   └── project_debug               # Debug build of the project
-│   └── project_release             # Release build of the project
+├── build/                     # Build directory for compiled objects
+├── bin/                       # Executable files directory
+│   └── project_debug          # Debug build of the project
+│   └── project_release        # Release build of the project
 │
 ├── src/
-│   ├── main.cpp        # Empty source file, main application entry
-│   ├── Author.cpp      # Empty source file for Author class
-│   └── Publication.cpp # Empty source file for Publication class
+│   ├── main.cpp               # Empty source file, main application entry
+│   ├── Author.cpp             # Empty source file for Author class
+│   └── Publication.cpp        # Empty source file for Publication class
 │
 ├── include/
-│   ├── Author.h        # Empty header file for the Author class
-│   └── Publication.h   # Empty header file for the Publication class
+│   ├── Author.h               # Empty header file for the Author class
+│   └── Publication.h          # Empty header file for the Publication class
 │
-├── Makefile                        # Makefile for building the project
-└── README.md                       # Project documentation
+├── setup.sh                   # build configuration
+├── Makefile                   # Makefile for building the project
+└── README.md                  # Project documentation
 ```
 
 ## How to Build and Run
