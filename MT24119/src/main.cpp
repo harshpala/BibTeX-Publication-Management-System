@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
         authorNames.push_back(author);
     }
 
-    string bibFilePath = "data/sample.bib";  // Path to the BibTeX file
+    string bibFilePath = "data/publist.bib";  // Path to the BibTeX file
     string facultyFilePath = "data/faculty.csv";  // Path to the faculty CSV file
 
     // Check if the BibTeX file exists and can be opened
