@@ -24,7 +24,7 @@ This project parses a BibTeX file containing publication data, processes it, and
 
 ## Project Structure
 ```
-/MT24119
+/Q1
 │
 ├── build/                          # Build directory for compiled objects
 ├── bin/                            # Executable files directory
@@ -59,7 +59,7 @@ This project parses a BibTeX file containing publication data, processes it, and
 Run the below command to move to Working directory:
 
 ```bash
-cd MT24119
+cd Q1
 ```
 
 ### **Step 2: bash script files to create the directory and file structures**
