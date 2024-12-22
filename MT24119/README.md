@@ -24,7 +24,7 @@ This project parses a BibTeX file containing publication data, processes it, and
 
 ## Project Structure
 ```
-/MT24119
+/{root-directory}
 │
 ├── build/                          # Build directory for compiled objects
 ├── bin/                            # Executable files directory
@@ -51,22 +51,14 @@ This project parses a BibTeX file containing publication data, processes it, and
 
 ## How to Build and Run
 
-### **Step 1: Change directory to the Working directory**
-
-Run the below command to move to Working directory:
-
-```bash
-cd MT24119
-```
-
-### **Step 2: bash script files to create the directory and file structures**
+### **Step 1: bash script files to create the directory and file structures**
 
 use the setup.sh to create the directory and file structures:
 
 ```bash
 ./setup.sh
 ```
-### **Step 3: Compile the Project**
+### **Step 2: Compile the Project**
 
 Use the `Makefile` to build the project:
 
@@ -77,7 +69,7 @@ This will build the debug version of the project. You can also build the optimiz
 ```bash
 make release
 ```
-### **Step 4: Run the Program**
+### **Step 3: Run the Program**
 
 Run the program with author names as command-line arguments. For example:
 
@@ -88,7 +80,7 @@ This will display the list of publications for the given authors along with the 
 
 If no arguments are provided or if there's a mistake, the program will display an appropriate message.
 
-### **Step 5: Input Validation**
+### **Step 4: Input Validation**
 - The program ensures that the input for author names is valid (only alphabetic characters and spaces).
   
 - If an invalid input is detected, the program will notify you with the following message
