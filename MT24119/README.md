@@ -24,26 +24,29 @@ This project parses a BibTeX file containing publication data, processes it, and
 
 ## Project Structure
 ```
-/{root-directory}
+/Q1
 │
 ├── build/                          # Build directory for compiled objects
 ├── bin/                            # Executable files directory
 │   └── project_debug               # Debug build of the project
 │   └── project_release             # Release build of the project
-├── data/                           # Directory containing sample data files
-│   ├── sample.bib                  # Sample BibTeX file with publication data
-│   └── faculty.csv                 # CSV file containing faculty names
-├── include/                        # Header files for the project
-│   ├── BibParser.h                 # Header for the BibParser class
-│   ├── FacultyParser.h             # Header for the FacultyParser class
-│   ├── Publication.h               # Header for the Publication class
-│   └── PublicationsDatabase.h      # Header for managing publications
-├── src/                            # Source code files
-│   ├── main.cpp                    # Main entry point of the application
-│   ├── BibParser.cpp               # Implementation of BibParser class
-│   ├── FacultyParser.cpp           # Implementation of FacultyParser class
-│   ├── Publication.cpp             # Implementation of Publication class
-│   └── PublicationsDatabase.cpp    # Implementation of PublicationsDatabase class
+│
+├── src/
+│   ├── main.cpp        # Empty source file, main application entry
+│   ├── Author.cpp      # Empty source file for Author class
+│   ├── Publication.cpp # Empty source file for Publication class
+│   └── BibParser.cpp   # Empty source file for BibParser class
+│
+├── include/
+│   ├── Author.h        # Empty header file for the Author class
+│   ├── Publication.h   # Empty header file for the Publication class
+│   ├── BibParser.h     # Empty header file for BibParser class
+│   └── PublicationsDatabase.h
+│
+├── data/
+│   ├── publist.bib     # Empty .bib file for sample data
+│   └── faculty.csv     # Empty CSV file for faculty data
+│    
 ├── setup.sh                        # build configuration
 ├── Makefile                        # Makefile for building the project
 └── README.md                       # Project documentation
@@ -51,14 +54,22 @@ This project parses a BibTeX file containing publication data, processes it, and
 
 ## How to Build and Run
 
-### **Step 1: bash script files to create the directory and file structures**
+### **Step 1: Change directory to the Working directory**
+
+Run the below command to move to Working directory:
+
+```bash
+cd Q1
+```
+
+### **Step 2: bash script files to create the directory and file structures**
 
 use the setup.sh to create the directory and file structures:
 
 ```bash
 ./setup.sh
 ```
-### **Step 2: Compile the Project**
+### **Step 3: Compile the Project**
 
 Use the `Makefile` to build the project:
 
@@ -69,25 +80,17 @@ This will build the debug version of the project. You can also build the optimiz
 ```bash
 make release
 ```
-### **Step 3: Run the Program**
+### **Step 4: Run the Program**
 
 Run the program with author names as command-line arguments. For example:
 
 ```bash
-./bin/project_debug "Arani Bhattacharya" "James Gross"
+./bin/project_debug
 ```
-This will display the list of publications for the given authors along with the average number of co-authors.
+This will display the list of publications.
 
-If no arguments are provided or if there's a mistake, the program will display an appropriate message.
+If there's a mistake, the program will display an appropriate message.
 
-### **Step 4: Input Validation**
-- The program ensures that the input for author names is valid (only alphabetic characters and spaces).
-  
-- If an invalid input is detected, the program will notify you with the following message
-
-```bash
-Invalid input: Author names should contain only alphabetic characters and spaces.
-```
 
 ## **Features**
 ### **Publications Display**
@@ -99,8 +102,3 @@ For each queried author, the program will display the following details:
 - DOI (if available).
 - Volume, Number, and Pages (if available).
 - List of Authors and their affiliations (if known).
-
-### **Average Number of Co-authors**
-
-For each publication associated with the queried author, the program calculates and displays the average number of co-authors.
-
