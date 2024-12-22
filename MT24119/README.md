@@ -24,25 +24,32 @@ This project parses a BibTeX file containing publication data, processes it, and
 
 ## Project Structure
 ```
-/MT24119
+/Q1
 │
-├── build/                     # Build directory for compiled objects
-├── bin/                       # Executable files directory
-│   └── project_debug          # Debug build of the project
-│   └── project_release        # Release build of the project
+├── build/                          # Build directory for compiled objects
+├── bin/                            # Executable files directory
+│   └── project_debug               # Debug build of the project
+│   └── project_release             # Release build of the project
 │
 ├── src/
-│   ├── main.cpp               # Empty source file, main application entry
-│   ├── Author.cpp             # Empty source file for Author class
-│   └── Publication.cpp        # Empty source file for Publication class
+│   ├── main.cpp        # Empty source file, main application entry
+│   ├── Author.cpp      # Empty source file for Author class
+│   ├── Publication.cpp # Empty source file for Publication class
+│   └── BibParser.cpp   # Empty source file for BibParser class
 │
 ├── include/
-│   ├── Author.h               # Empty header file for the Author class
-│   └── Publication.h          # Empty header file for the Publication class
+│   ├── Author.h        # Empty header file for the Author class
+│   ├── Publication.h   # Empty header file for the Publication class
+│   ├── BibParser.h     # Empty header file for BibParser class
+│   └── PublicationsDatabase.h
 │
-├── setup.sh                   # build configuration
-├── Makefile                   # Makefile for building the project
-└── README.md                  # Project documentation
+├── data/
+│   ├── publist.bib     # Empty .bib file for sample data
+│   └── faculty.csv     # Empty CSV file for faculty data
+│    
+├── setup.sh                        # build configuration
+├── Makefile                        # Makefile for building the project
+└── README.md                       # Project documentation
 ```
 
 ## How to Build and Run
@@ -52,7 +59,7 @@ This project parses a BibTeX file containing publication data, processes it, and
 Run the below command to move to Working directory:
 
 ```bash
-cd MT24119
+cd Q1
 ```
 
 ### **Step 2: bash script files to create the directory and file structures**
@@ -80,9 +87,10 @@ Run the program with author names as command-line arguments. For example:
 ```bash
 ./bin/project_debug
 ```
-This will display the list of publications for the given authors.
+This will display the list of publications.
 
 If there's a mistake, the program will display an appropriate message.
+
 
 ## **Features**
 ### **Publications Display**
@@ -94,18 +102,3 @@ For each queried author, the program will display the following details:
 - DOI (if available).
 - Volume, Number, and Pages (if available).
 - List of Authors and their affiliations (if known).
-
-
-## **Note**
-Each Publication object should contain a list of Author objects, representing the authors of the publication. Ensure at least one author has the institute's affiliation.
-Data Structure Considerations:
-
-Use STL containers like vector to manage collections of objects (e.g., storing multiple Publication or Author objects).
-Consider using map or unordered_map for efficient searching of publications by author name.
-Example Scenario Implementation:
-
-Create several Author objects, some affiliated with the institute and others not.
-Create a Publication object, adding the Author objects to it.
-Implement checks in the Publication class to validate the conditions like having at least one affiliated author.
-Handling Optional DOI:
-
